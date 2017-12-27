@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://addons/isometric_grid/scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://addons/isometric_grid/icons/player.png" type="Texture" id=2]
+[ext_resource path="res://addons/isometric_grid/scripts/player_visualizer.gd" type="Script" id=3]
+[ext_resource path="res://addons/isometric_grid/sprites/Player.png" type="Texture" id=4]
+
+[node name="IsometricPlayer" type="KinematicBody2D"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+max_speed = 1200
+
+[node name="TargetVisualizer" type="Node2D" parent="."]
+
+script/script = ExtResource( 3 )
+visible = false
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 4 )
+
+

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://addons/isometric_grid/scripts/building.gd" type="Script" id=1]
+[ext_resource path="res://addons/isometric_grid/icons/building.png" type="Texture" id=2]
+[ext_resource path="res://addons/isometric_grid/sprites/Building.png" type="Texture" id=3]
+[ext_resource path="res://addons/isometric_grid/scripts/drag_area.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 66, 63 )
+
+[node name="IsometricBuilding" type="KinematicBody2D"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 4 )
+input_action = "left_click"
+drag_parent = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = -1
+
+
